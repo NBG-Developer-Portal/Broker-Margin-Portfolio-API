@@ -1,0 +1,458 @@
+{
+	"info": {
+		"_postman_id": "f05741cc-6313-404d-9cde-d21cff1efdce",
+		"name": "Margin.Sandbox.v1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Margin",
+			"item": [
+				{
+					"name": "GetPortfolio",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "sandbox_id",
+								"value": "{{sandbox_id}}",
+								"type": "text"
+							},
+							{
+								"key": "Client-id",
+								"value": "{{client_id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reqId\": \"{{reqId}}\",\r\n    \"brokerId\": \"{{brokerId}}\",\r\n    \"trdClientId\": \"{{trdClientId}}\",\r\n    \"dssAccountId\": \"{{dssAccountId}}\",\r\n    \"dssInvestorShare\": \"{{dssInvestorShare}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{root_url}}/GetPortfolio",
+							"host": [
+								"{{root_url}}"
+							],
+							"path": [
+								"GetPortfolio"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetBalance",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "sandbox_id",
+								"value": "{{sandbox_id}}",
+								"type": "text"
+							},
+							{
+								"key": "Client-id",
+								"value": "{{client_id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reqId\": \"{{reqId}}\",\r\n    \"brokerId\": \"{{brokerId}}\",\r\n    \"trdClientId\": \"{{trdClientId}}\",\r\n    \"dssAccountId\": \"{{dssAccountId}}\",\r\n    \"dssInvestorShare\": \"{{dssInvestorShare}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{root_url}}/GetBalance",
+							"host": [
+								"{{root_url}}"
+							],
+							"path": [
+								"GetBalance"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CancelOrder",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "sandbox_id",
+								"type": "text",
+								"value": "{{sandbox_id}}"
+							},
+							{
+								"key": "Client-id",
+								"type": "text",
+								"value": "{{client_id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reqId\": \"{{reqId}}\",\r\n    \"brokerId\": \"{{brokerId}}\",\r\n    \"trdClientId\": \"{{trdClientId}}\",\r\n    \"dssAccountId\": \"{{dssAccountId}}\",\r\n    \"dssInvestorShare\": \"{{dssInvestorShare}}\",\r\n    \"orderId\": \"{{orderId}}\",\r\n    \"side\": \"B\",\r\n    \"price\": 1.23,\r\n    \"quantity\": 200.00,\r\n    \"instrument\": \"{{instrument}}\",\r\n    \"clrSubAcctId\": \"NB99\",\r\n    \"checkOnly\": \"false\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{root_url}}/CancelOrder",
+							"host": [
+								"{{root_url}}"
+							],
+							"path": [
+								"CancelOrder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "InsertOrder",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"orderId\", pm.response.json().orderId);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "sandbox_id",
+								"type": "text",
+								"value": "{{sandbox_id}}"
+							},
+							{
+								"key": "Client-id",
+								"type": "text",
+								"value": "{{client_id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reqId\": \"{{reqId}}\",\r\n    \"brokerId\": \"{{brokerId}}\",\r\n    \"trdClientId\": \"{{trdClientId}}\",\r\n    \"dssAccountId\": \"{{dssAccountId}}\",\r\n    \"dssInvestorShare\": \"{{dssInvestorShare}}\",\r\n    \"orderId\": \"234579\",\r\n    \"side\": \"S\",\r\n    \"price\": 11.54,\r\n    \"quantity\": 300.00,\r\n    \"instrument\": \"{{instrument}}\",\r\n    \"clrSubAcctId\": \"NB99\",\r\n    \"checkOnly\": \"false\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{root_url}}/InsertOrder",
+							"host": [
+								"{{root_url}}"
+							],
+							"path": [
+								"InsertOrder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "QueryOrder",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "sandbox_id",
+								"type": "text",
+								"value": "{{sandbox_id}}"
+							},
+							{
+								"key": "Client-id",
+								"type": "text",
+								"value": "{{client_id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reqId\": \"{{reqId}}\",\r\n    \"brokerId\": \"{{brokerId}}\",\r\n    \"trdClientId\": \"{{trdClientId}}\",\r\n    \"dssAccountId\": \"{{dssAccountId}}\",\r\n    \"dssInvestorShare\": \"{{dssInvestorShare}}\",\r\n    \"orderId\": \"{{orderId}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{root_url}}/QueryOrder",
+							"host": [
+								"{{root_url}}"
+							],
+							"path": [
+								"QueryOrder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Trade",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "sandbox_id",
+								"type": "text",
+								"value": "{{sandbox_id}}"
+							},
+							{
+								"key": "Client-id",
+								"type": "text",
+								"value": "{{client_id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reqId\": \"{{reqId}}\",\r\n    \"brokerId\": \"{{brokerId}}\",\r\n    \"trdClientId\": \"{{trdClientId}}\",\r\n    \"dssAccountId\": \"{{dssAccountId}}\",\r\n    \"dssInvestorShare\": \"{{dssInvestorShare}}\",\r\n    \"orderId\": \"{{orderId}}\",\r\n    \"tradeId\": \"123\",\r\n    \"tradeTime\": \"19/2/2021 5:56:14 μμ\",\r\n    \"side\": \"B\",\r\n    \"price\": 0.635,\r\n    \"quantity\": 100.00,\r\n    \"instrument\": \"{{instrument}}\",\r\n    \"clrAcctId\": \"NB99\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{root_url}}/Trade",
+							"host": [
+								"{{root_url}}"
+							],
+							"path": [
+								"Trade"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sandbox",
+			"item": [
+				{
+					"name": "Create Sandbox",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "client-id",
+								"value": "{{client_id}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"sandboxId\": \"{{sandbox_id}}\"\n}"
+						},
+						"url": {
+							"raw": "{{root_url}}/sandbox",
+							"host": [
+								"{{root_url}}"
+							],
+							"path": [
+								"sandbox"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Sandbox",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "client-id",
+								"value": "{{client_id}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{root_url}}/sandbox/{{sandbox_id}}",
+							"host": [
+								"{{root_url}}"
+							],
+							"path": [
+								"sandbox",
+								"{{sandbox_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Import Sandbox",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "client-id",
+								"value": "{{client_id}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"SandboxID\": \"{{sandbox_id}}\",\r\n    \"Orders\": [\r\n        {\r\n            \"trnId\": null,\r\n            \"orderId\": \"234579\",\r\n            \"lastTrnId\": null,\r\n            \"lastActionId\": null,\r\n            \"side\": \"S\",\r\n            \"price\": 11.54,\r\n            \"instrument\": \"MYTIL\",\r\n            \"clrSubAcctId\": \"NB99\",\r\n            \"trdClientId\": \"31304\",\r\n            \"dssAccountId\": \"00666452813\",\r\n            \"dssInvestorShare\": \"00000255672\",\r\n            \"totalQty\": 300,\r\n            \"lastQty\": null,\r\n            \"execQty\": null,\r\n            \"cancelQty\": null,\r\n            \"meanPx\": null\r\n        }\r\n    ],\r\n    \"SandBoxMargins\": [\r\n        {\r\n            \"trdClientId\": \"57003\",\r\n            \"dssAccountId\": \"06748659985\",\r\n            \"dssInvestorShare\": \"00014009565\",\r\n            \"brokerId\": \"86953\",\r\n            \"creditPolicy\": \"IRIS CREDIT\",\r\n            \"portfolioAmt\": 29436,\r\n            \"cashAmt\": 2678.91,\r\n            \"unweightedAmt\": 22391.2,\r\n            \"creditLine\": 33473.31,\r\n            \"orderAmt\": 0,\r\n            \"buyAmt\": 2340,\r\n            \"sellAmt\": 2700,\r\n            \"available\": 44154,\r\n            \"marginSurplus\": 0,\r\n            \"marginSell\": 0,\r\n            \"marginBuy\": 0,\r\n            \"initialPct\": 40,\r\n            \"preservePct\": 35,\r\n            \"marginPct\": 37\r\n        },\r\n        {\r\n            \"trdClientId\": \"31304\",\r\n            \"dssAccountId\": \"00666452813\",\r\n            \"dssInvestorShare\": \"00000255672\",\r\n            \"brokerId\": \"86953\",\r\n            \"creditPolicy\": \"IRIS CREDIT\",\r\n            \"portfolioAmt\": 6156,\r\n            \"cashAmt\": 0,\r\n            \"unweightedAmt\": 3221.25,\r\n            \"creditLine\": 8813.25,\r\n            \"orderAmt\": 0,\r\n            \"buyAmt\": 0,\r\n            \"sellAmt\": 0,\r\n            \"available\": 9234,\r\n            \"marginSurplus\": 0,\r\n            \"marginSell\": 0,\r\n            \"marginBuy\": 0,\r\n            \"initialPct\": 40,\r\n            \"preservePct\": 35,\r\n            \"marginPct\": 37\r\n        }\r\n    ],\r\n    \"Portfolios\": [\r\n        {\r\n            \"brokerId\": \"86953\",\r\n            \"trdClientId\": \"31304\",\r\n            \"dssAccountId\": \"00666452813\",\r\n            \"dssInvestorShare\": \"00000255672\",\r\n            \"instrument\": \"MYTIL\",\r\n            \"sod\": 2000,\r\n            \"rcpt\": 0,\r\n            \"meanPx\": 11.54,\r\n            \"buys\": 0,\r\n            \"sells\": 0,\r\n            \"buyOrd\": 0,\r\n            \"sellOrd\": 0,\r\n            \"available\": 2000,\r\n            \"wtValue\": 24880\r\n        },\r\n        {\r\n            \"brokerId\": \"86953\",\r\n            \"trdClientId\": \"31304\",\r\n            \"dssAccountId\": \"00666452813\",\r\n            \"dssInvestorShare\": \"00000255672\",\r\n            \"instrument\": \"OPAP\",\r\n            \"sod\": 1000,\r\n            \"rcpt\": 0,\r\n            \"meanPx\": 10.56,\r\n            \"buys\": 0,\r\n            \"sells\": 0,\r\n            \"buyOrd\": 0,\r\n            \"sellOrd\": 0,\r\n            \"available\": 1000,\r\n            \"wtValue\": 10500\r\n        },\r\n        {\r\n            \"brokerId\": \"86953\",\r\n            \"trdClientId\": \"31304\",\r\n            \"dssAccountId\": \"00666452813\",\r\n            \"dssInvestorShare\": \"00000255672\",\r\n            \"instrument\": \"ETE\",\r\n            \"sod\": 600,\r\n            \"rcpt\": 0,\r\n            \"meanPx\": 1.958,\r\n            \"buys\": 0,\r\n            \"sells\": 0,\r\n            \"buyOrd\": 0,\r\n            \"sellOrd\": 0,\r\n            \"available\": 600,\r\n            \"wtValue\": 1231.2\r\n        },\r\n        {\r\n            \"brokerId\": \"86953\",\r\n            \"trdClientId\": \"57003\",\r\n            \"dssAccountId\": \"06748659985\",\r\n            \"dssInvestorShare\": \"00014009565\",\r\n            \"instrument\": \"HTO\",\r\n            \"sod\": 2000,\r\n            \"rcpt\": 0,\r\n            \"meanPx\": 12.47,\r\n            \"buys\": 0,\r\n            \"sells\": 0,\r\n            \"buyOrd\": 0,\r\n            \"sellOrd\": 0,\r\n            \"available\": 2000,\r\n            \"wtValue\": 24940\r\n        },\r\n        {\r\n            \"brokerId\": \"86953\",\r\n            \"trdClientId\": \"57003\",\r\n            \"dssAccountId\": \"06748659985\",\r\n            \"dssInvestorShare\": \"00014009565\",\r\n            \"instrument\": \"OPAP\",\r\n            \"sod\": 2000,\r\n            \"rcpt\": 0,\r\n            \"meanPx\": 10.56,\r\n            \"buys\": 0,\r\n            \"sells\": 0,\r\n            \"buyOrd\": 0,\r\n            \"sellOrd\": 0,\r\n            \"available\": 2000,\r\n            \"wtValue\": 21000\r\n        },\r\n        {\r\n            \"brokerId\": \"86953\",\r\n            \"trdClientId\": \"57003\",\r\n            \"dssAccountId\": \"06748659985\",\r\n            \"dssInvestorShare\": \"00014009565\",\r\n            \"instrument\": \"EUROB\",\r\n            \"sod\": 500,\r\n            \"rcpt\": 0,\r\n            \"meanPx\": 0.562,\r\n            \"buys\": 0,\r\n            \"sells\": 4500,\r\n            \"buyOrd\": 0,\r\n            \"sellOrd\": 0,\r\n            \"available\": 500,\r\n            \"wtValue\": 290\r\n        },\r\n        {\r\n            \"brokerId\": \"86953\",\r\n            \"trdClientId\": \"57003\",\r\n            \"dssAccountId\": \"06748659985\",\r\n            \"dssInvestorShare\": \"00014009565\",\r\n            \"instrument\": \"ALPHA\",\r\n            \"sod\": 0,\r\n            \"rcpt\": 0,\r\n            \"meanPx\": 0.756,\r\n            \"buys\": 300,\r\n            \"sells\": 0,\r\n            \"buyOrd\": 0,\r\n            \"sellOrd\": 0,\r\n            \"available\": 0,\r\n            \"wtValue\": 0\r\n        },\r\n        {\r\n            \"brokerId\": \"86953\",\r\n            \"trdClientId\": \"57003\",\r\n            \"dssAccountId\": \"06748659985\",\r\n            \"dssInvestorShare\": \"00014009565\",\r\n            \"instrument\": \"ETE\",\r\n            \"sod\": 1100,\r\n            \"rcpt\": 0,\r\n            \"meanPx\": 2.36,\r\n            \"buys\": 0,\r\n            \"sells\": 0,\r\n            \"buyOrd\": 0,\r\n            \"sellOrd\": 0,\r\n            \"available\": 1100,\r\n            \"wtValue\": 2257.2\r\n        }\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "{{root_url}}/sandbox/{{sandbox_id}}",
+							"host": [
+								"{{root_url}}"
+							],
+							"path": [
+								"sandbox",
+								"{{sandbox_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Sandbox",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "client-id",
+								"value": "{{client_id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{root_url}}/sandbox/{{sandbox_id}}",
+							"host": [
+								"{{root_url}}"
+							],
+							"path": [
+								"sandbox",
+								"{{sandbox_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "accessTokenUrl",
+				"value": "{{token_url}}",
+				"type": "string"
+			},
+			{
+				"key": "clientSecret",
+				"value": "{{client_secret}}",
+				"type": "string"
+			},
+			{
+				"key": "clientId",
+				"value": "{{client_id}}",
+				"type": "string"
+			},
+			{
+				"key": "scope",
+				"value": "{{scope}}",
+				"type": "string"
+			},
+			{
+				"key": "tokenName",
+				"value": "Token Name",
+				"type": "string"
+			},
+			{
+				"key": "challengeAlgorithm",
+				"value": "S256",
+				"type": "string"
+			},
+			{
+				"key": "grant_type",
+				"value": "client_credentials",
+				"type": "string"
+			},
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			},
+			{
+				"key": "client_authentication",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
